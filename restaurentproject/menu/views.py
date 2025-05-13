@@ -1,10 +1,12 @@
 from django.shortcuts import render
-from .models import menu 
+from .models import Product , Category
 # Create your views here.
 
 def index(request):
-    available_products = menu.objects.filter(available = True) 
+    available_products = Product.objects.filter(available = True) 
+    categories = Category.objects.all()
     context = {
-        'available_product' : available_products
+        'available_products' : available_products,
+        'categories' : categories,
     }
     return render(request ,'menu/index.html' , context)   

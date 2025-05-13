@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import menu , Category
+from .models import Product , Category
 # Register your models here.
-@admin.register(menu)
-class MenuAdmin(admin.ModelAdmin):
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
     list_display = ('name' , 'price' , 'description' , 'available') 
 
 @admin.register(Category) 
