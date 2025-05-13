@@ -126,6 +126,12 @@
             margin-left: 10px;
             position: absolute;
         }
+        .container{
+            overflow-x: scroll;
+            overflow-y: hidden;
+            white-space: nowrap;
+            padding-bottom: 40px;
+        }
         /* .food_items2{
             background-size: cover;
             background-color: white;
@@ -186,17 +192,20 @@
     </header>
     <div class="main_picture_wrapper">
         <img src="{% static 'images/8885b9930acd4459972bc4e73ca7cbbb.jpg' %}" alt="felamingo_background" class="main_picture">
-    </div>
+    </div> 
         <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 30px; padding-left: 80px; padding-right: 100px;">
-            {% for category in categories %}
-                <button class="food_items">
-                    <img src="{{ category.image.url }}" alt="{{ category.name }}" class="category_images"> 
-                        <p class="food_items_name">
-                            {{ category.name }}
-                        </p> 
-                </button>
-            {% endfor %} 
+            <div class="container">
+                {% for category in categories %}
+                    <button class="food_items">
+                        <img src="{{ category.image.url }}" alt="{{ category.name }}" class="category_images"> 
+                            <p class="food_items_name">
+                                {{ category.name }}
+                            </p> 
+                    </button>
+                {% endfor %} 
+            </div>
         </div>
+    </div>    
     <!-- <button class="food_items2">
         <img src="{% static 'images/6f11321f789a42a3ac563fe872f1cf6a.jpg' %}" alt="Food Item2" class="category_images2">
         <p class="food_items_name2">
