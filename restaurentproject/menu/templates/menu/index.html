@@ -177,11 +177,11 @@
     </div> 
     <hr>
      
-    <div class="row bg-primary">
+    <!-- <div class="row bg-primary">
       <div class="col-1 bg-danger">
         hgfgjhnljljk;oklkjhuhihufytgugfytgify
       </div>
-    </div>
+    </div> -->
 
 
     <div class="container text-center">
@@ -198,4 +198,17 @@
         </div>
     </div>   
 </body> 
+
+{% if request.user.is_authenticated %}
+    <p style="text-align:right; margin: 10px; font-family: sans-serif;">
+        خوش اومدی، {{ request.user.username }}! |
+        <a href="{% url 'logout' %}">خروج</a>
+    </p>
+{% else %}
+    <p style="text-align:right; margin: 10px; font-family: sans-serif;">
+        <a href="{% url 'login' %}">ورود</a> |
+        <a href="{% url 'register' %}">ثبت‌نام</a>
+    </p>
+{% endif %}
+
 </html>

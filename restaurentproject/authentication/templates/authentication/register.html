@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: aquamarine;
+        }
+        .inputs{
+            margin-left: 550px;
+            margin-top: 250px;
+            border-style: solid;
+            border-color: black;
+            padding: 50px;
+            width: 250px;
+        }
+        .text{
+            font-size: large;
+            font-weight:bold ;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>register page</h1> 
+
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li style="color:red;">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="inputs">
+            <p class="text">register</p>
+            <input type="text" name="username" placeholder="username" required><br>
+            <input type="password" name="password" placeholder="password" required><br>
+            <button type="submit">submit</button>
+        </div>
+
+    </form>
+</body>
+</html>
+
+
+
+
+
