@@ -20,7 +20,7 @@
         }
         .percon_color{
             color: white;
-            font-size: 22px;
+            font-size: 22px; 
         }
         .percon_div{
             color: #e62498;
@@ -98,10 +98,52 @@
             position: relative;
             border-radius: 13px;
         }
-        
-    {% block style-content %}
 
-    {% endblock %}
+/* ------------------------------------ */
+        
+
+
+        footer {
+            background-color: #f2f2f2;
+            height: 70px;
+            text-align: center;
+            padding-top: 25px;
+            font-size: large;
+            margin-top: auto;
+            flex-shrink: 0;
+        }
+
+
+
+/* --------------------------------------- */
+
+
+
+
+
+/* --------------------------------------- */
+
+
+.page-body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main_picture_wrapper {
+    flex-shrink: 0;
+}
+
+
+
+
+
+
+/* --------------------------------------- */
+
+{% block style-content %}
+
+{% endblock %}
 
     </style>
 
@@ -113,14 +155,17 @@
 
 </head>
 
-<body>
+<body class="page-body">
+
 
 <!-- کل هدر کدای زیره -->
 
     <header>
         <br>
         <div class="percon_div">
+            <a href="/register/">
             <i class="bi bi-person-circle percon_color"></i>
+            </a>
         </div>
         <div class="felamingi_div">
             <img src="{% static 'images/57ab3c9f9def4ef88780f002c1edd23f.png' %}" alt="felamingo_picture" class="felamingo_picture">
@@ -136,7 +181,7 @@
         <img src="{% static 'images/8885b9930acd4459972bc4e73ca7cbbb.jpg' %}" alt="felamingo_background" class="main_picture">
     </div> 
     
-</div>
+
 
 
 
@@ -151,9 +196,13 @@
 {% endblock %}
 <br>
 <br>
-<footer style="background-color: #f2f2f2; height: 70px; text-align: center; padding-top: 25px; font-size: large;">
+
+
+
+<footer>
   <p>© 2025 Felamingo. All rights reserved.</p>
 </footer>
+
 <!-- background-color: #f2f2f2; padding: 50px; height: 50px; -->
 
 
