@@ -104,14 +104,14 @@
 <div class="container text-center">
     {% for category in categories %} <!-- جدید: برای هر کتگوری -->
 
-        {% if not forloop.first %} <!-- جدید: برای جداکردن دسته‌ها -->
+        
             <!-- خط جداکننده با نام دسته وسطش -->
-            <div style="display: flex; align-items: center; margin: 20px 0;">
+            <div style="display: flex; align-items: center; margin: 20px ;">
                 <hr class="hr-style" style="flex: 1; border: none; border-top: 3px solid #5b5b5b; margin: 0 10px; border-radius: 10px;">
                 <span style="white-space: nowrap; font-weight: bold; color: #555;">{{ category.name }}</span>
                 <hr class="hr-style" style="flex: 1; border: none; border-top: 3px solid #5b5b5b; margin: 0 10px; border-radius: 10px;">
             </div> <!-- جدید -->
-        {% endif %} <!-- جدید -->
+       
 
 
         <div id="{{ category.name|slugify }}"></div> <!-- جدید: اسکرول به این نقطه -->
@@ -138,10 +138,42 @@
 
 
 
+<!-- با کدای زیر کتگوری های اسکرول بار از سمت راست میان -->
+
+<!-- <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const scrollbar = document.querySelector('.scroolbar');
+    if (scrollbar) {
+      scrollbar.scrollTo({
+        left: scrollbar.scrollWidth,
+        behavior: 'smooth'  // اسکرول نرم و قشنگ
+      });
+    }
+  });
+</script> -->
 
 
 
-
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const targetID = this.getAttribute('href').substring(1);
+    const targetElement = document.getElementById(targetID);
+    if (targetElement) {
+      // فاصله بالایی که میخوای (مثلاً 50 پیکسل)
+      const offset = 250;
+      const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - offset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  });
+});
+</script>
 
 
 
