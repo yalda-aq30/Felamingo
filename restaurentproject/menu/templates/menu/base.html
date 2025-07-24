@@ -163,8 +163,8 @@
     <header>
         <br>
         <div class="percon_div">
-            <a href="/register/">
-            <i class="bi bi-person-circle percon_color"></i>
+            <a href="{% if user.is_authenticated %}/register/{% else %}/login/{% endif %}"> 
+                <i class="bi bi-person-circle percon_color"></i> 
             </a>
         </div>
         <div class="felamingi_div">
