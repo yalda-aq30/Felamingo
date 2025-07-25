@@ -14,7 +14,7 @@ class Product(models.Model):
     description = models.TextField(null=True , blank=True) 
     available = models.BooleanField(default=True)  
     category = models.ForeignKey(Category , on_delete=models.CASCADE , null=True)
-
+    image = models.ImageField(upload_to='product_images/', blank=True, null=True) 
 
 def __str__(self):
         return self.name

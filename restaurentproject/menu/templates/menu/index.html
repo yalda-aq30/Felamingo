@@ -1,10 +1,11 @@
 {% extends "menu/base.html" %}
+{% load static %}
 
 
 <style>
 
     {% block style-content %}
-    .food_items{
+    .category_items{
         background-size: cover;
         background-color: white;
         border: none;
@@ -20,7 +21,7 @@
         margin-left: 10px;
         margin-top: 15px;
     }
-    .food_items:hover{
+    .category_items:hover{
         transform: translateY(-5px);
     }
     .category_images{
@@ -29,7 +30,7 @@
         border-radius: 17px;
         padding-right: 1px;
     }
-    .food_items_name{
+    .category_items_name{
         font-size: 10px;
         margin-top: 13px;
         margin-left: 10px;
@@ -54,6 +55,49 @@
         width: 50%;
         margin: 60px auto 40px auto;
     }
+    .item-image{
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 5px;
+        margin-right: 390px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        position: relative;
+    }
+    .item-name{
+        margin-left: -365px;
+        margin-top: 30px;
+        position: absolute;
+    }
+    .item-description{
+        position: absolute;
+        margin-left: 160px;
+        margin-top: -95px;
+        width: 300px;
+        overflow-wrap: break-word;
+        white-space: normal;
+        text-align: left;
+        line-height: 1.1;
+        font-weight: lighter;
+    }
+    .item-price{
+        position: absolute;
+        margin-left: 160px;
+        margin-top: -38px;
+    }
+    .unavailable-image{
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 5px;
+        margin-right: 390px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        position: relative;
+    }
     {% endblock %}
 
 </style>
@@ -68,9 +112,9 @@
             <div class="scroolbar">
                 {% for category in categories %}
                     <a href="#{{ category.name|slugify }}">
-                        <button class="food_items">
+                        <button class="category_items">
                             <img src="{{ category.image.url }}" alt="{{ category.name }}" class="category_images"> 
-                                <p class="food_items_name">
+                                <p class="category_items_name">
                                     {{ category.name }}
                                 </p> 
                         </button>
@@ -124,11 +168,17 @@
                     {% else %}
                         <div class="menu_item mt-1 mx-5 col-5"> <!-- معمولی -->
                     {% endif %}
-                            <hr>
-                            <strong> {{ product.name }} </strong> 
-                            <hr>
-                            <p> {{ product.description }} </p>
-                            <p> {{ product.price }} </p>
+
+                            {% if product.image %}
+                                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="item-image">
+                            {% else %}
+                                <img src="{% static 'images/download.png' %}" alt="default image" class="unavailable-image">
+                            {% endif %}
+
+                            <strong class="item-name"> {{ product.name }} </strong> 
+                           
+                            <p class="item-description"> {{ product.description }} </p>
+                            <p class="item-price"> {{ product.price }} </p>
                         </div>
                 {% endfor %}
             {% endwith %}
@@ -185,19 +235,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 {% block food-items %}
 
-<!-- برای ثبت نامه ولی دقیق یادم نمیاد چیه فقط گزینه ثبت نام و خروج داره -->
 
-    {% if request.user.is_authenticated %}
-        <p style="text-align:right; margin: 10px; font-family: sans-serif;">
-            خوش اومدی، {{ request.user.username }}! |
-            <a href="{% url 'logout' %}">خروج</a>
-        </p>
-    {% else %}
-        <p style="text-align:right; margin: 10px; font-family: sans-serif;">
-            <a href="{% url 'login' %}">ورود</a> |
-            <a href="{% url 'register' %}">ثبت‌نام</a>
-        </p>
-    {% endif %} 
 
 {% endblock %}
 
