@@ -1,4 +1,4 @@
-{% load static %}
+{% load static %} 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -137,6 +137,77 @@
 
 
 
+.hamburger_button {
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  background-color: #e62498;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: white;
+  font-size: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+}
+
+/* منوی سایدبار */
+.sidebar_menu {
+  position: fixed;
+  top: 0;
+  right: -300px; /* اول مخفیه */
+  width: 300px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: -2px 0 8px rgba(0,0,0,0.3);
+  padding: 20px;
+  transition: right 0.3s ease;
+  z-index: 1000;
+}
+
+/* وقتی فعال میشه */
+.sidebar_menu.active {
+  right: 0;
+}
+
+/* دکمه بستن × */
+.close_btn {
+  font-size: 28px;
+  cursor: pointer;
+  color: #e62498;
+  display: block;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+/* استایل لیست */
+.sidebar_menu ul {
+    margin-top: 50px;
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar_menu li {
+  margin: 15px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.sidebar_menu li:last-child {
+  border-bottom: none; /* برای آیتم آخر خط نیاد */
+}
+
+.sidebar_menu a {
+  text-decoration: none;
+  color: #e62498;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+
+
 
 
 /* --------------------------------------- */
@@ -172,7 +243,18 @@
         </div> 
         <h5 class="text_felamingo">Felamingo</h5>
         <p class="text">Restaurant</p>
-        <button class="bi bi-list hamburger_button"></button>
+        <button id="hamburgerBtn" class="bi bi-list hamburger_button"></button>
+
+        <div id="sidebarMenu" class="sidebar_menu">
+            <!-- <span id="closeSidebar" class="close_btn">&times;</span> -->
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Menu</a></li>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Call with us</a></li>
+            </ul>
+        </div>
+
         <br>
     </header>
 
@@ -181,6 +263,16 @@
         <img src="{% static 'images/8885b9930acd4459972bc4e73ca7cbbb.jpg' %}" alt="felamingo_background" class="main_picture">
     </div> 
     
+
+<script>
+  const btn = document.getElementById("hamburgerBtn");
+  const menu = document.getElementById("sidebarMenu");
+
+  btn.addEventListener("click", () => {
+    menu.classList.toggle("active"); // ✨ با هر کلیک، active اضافه یا حذف میشه
+  });
+</script>
+
 
 
 
