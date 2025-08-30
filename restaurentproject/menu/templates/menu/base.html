@@ -234,7 +234,7 @@
     <header>
         <br>
         <div class="percon_div">
-            <a href="{% if user.is_authenticated %}/register/{% else %}/login/{% endif %}"> 
+            <a href="{% if user.is_authenticated %}register/{% else %}/login/{% endif %}"> 
                 <i class="bi bi-person-circle percon_color"></i> 
             </a>
         </div>
@@ -248,10 +248,10 @@
         <div id="sidebarMenu" class="sidebar_menu">
             <!-- <span id="closeSidebar" class="close_btn">&times;</span> -->
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Menu</a></li>
-                <li><a href="#">About us</a></li>
-                <li><a href="#">Call with us</a></li>
+                <li><a href="#" id="homeLink">Home</a></li>
+                <li><a href="#" id="authLink">Authentication</a></li>
+                <li><a href="#" id="aboutLink">About us</a></li>
+                <li><a href="#" id="contactLink">Contact</a></li> 
             </ul>
         </div>
 
@@ -268,10 +268,35 @@
   const btn = document.getElementById("hamburgerBtn");
   const menu = document.getElementById("sidebarMenu");
 
+  // باز و بسته شدن منو با خود دکمه
   btn.addEventListener("click", () => {
-    menu.classList.toggle("active"); // ✨ با هر کلیک، active اضافه یا حذف میشه
+    menu.classList.toggle("active");
+  });
+
+  // هندل کلیک روی لینک‌ها
+  document.addEventListener("click", function (e) {
+    if (e.target && e.target.id === "homeLink") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    if (e.target && e.target.id === "authLink") {
+      e.preventDefault();
+
+      const isAuthenticated = document.cookie
+        .split(";")
+        .some((cookie) => cookie.trim().startsWith("sessionid="));
+
+      if (isAuthenticated) {
+        window.location.href = "/login/";
+      } else {
+        window.location.href = "/register/";
+      }
+    }
   });
 </script>
+
+
 
 
 
