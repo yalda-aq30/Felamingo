@@ -106,7 +106,19 @@
 
 
 
-    {% block content %}
+{% block boot-content %}
+
+
+{% comment %} چیزایی ک باید بنویسم تا سایتم برای مبایل استاندارد باشه {% endcomment %}
+
+
+{% endblock %}
+
+
+
+
+
+{% block content %}
 
 <!-- کتگوری های هر غذا-->
 
@@ -147,46 +159,51 @@
 
 
 
-<div class="container text-center">
-    {% for category in categories %} <!-- جدید: برای هر کتگوری -->
+    <div class="container text-center">
+        {% for category in categories %} <!-- جدید: برای هر کتگوری -->
 
+            
+                <!-- خط جداکننده با نام دسته وسطش -->
+                <div style="display: flex; align-items: center; margin: 20px ;">
+                    <hr class="hr-style" style="flex: 1; border: none; border-top: 3px solid #5b5b5b; margin: 0 10px; border-radius: 10px;">
+                    <span style="white-space: nowrap; font-weight: bold; color: #555;">{{ category.name }}</span>
+                    <hr class="hr-style" style="flex: 1; border: none; border-top: 3px solid #5b5b5b; margin: 0 10px; border-radius: 10px;">
+                </div> <!-- جدید -->
         
-            <!-- خط جداکننده با نام دسته وسطش -->
-            <div style="display: flex; align-items: center; margin: 20px ;">
-                <hr class="hr-style" style="flex: 1; border: none; border-top: 3px solid #5b5b5b; margin: 0 10px; border-radius: 10px;">
-                <span style="white-space: nowrap; font-weight: bold; color: #555;">{{ category.name }}</span>
-                <hr class="hr-style" style="flex: 1; border: none; border-top: 3px solid #5b5b5b; margin: 0 10px; border-radius: 10px;">
-            </div> <!-- جدید -->
-       
 
 
-        <div id="{{ category.name|slugify }}"></div> <!-- جدید: اسکرول به این نقطه -->
+            <div id="{{ category.name|slugify }}"></div> <!-- جدید: اسکرول به این نقطه -->
 
-        <div class="row text-end moosh"> <!-- جدید: ردیف جدا برای هر دسته -->
-            {% with category.product_set.all as items %} <!-- جدید: گرفتن آیتم‌های مربوط به هر کتگوری -->
-                {% for product in items %}
-                    {% if forloop.last and not forloop.counter|divisibleby:2 %} <!-- جدید: اگر آخریه و فرده -->
-                        <div class="menu_item mt-1 col-5 mx-auto"> <!-- جدید: وسط‌چین -->
-                    {% else %}
-                        <div class="menu_item mt-1 col-5 mx-auto"> <!-- معمولی -->
-                    {% endif %}
+            <div class="row text-end moosh"> <!-- جدید: ردیف جدا برای هر دسته -->
+                {% with category.product_set.all as items %} <!-- جدید: گرفتن آیتم‌های مربوط به هر کتگوری -->
+                    {% for product in items %}
+                        {% if forloop.last and not forloop.counter|divisibleby:2 %} <!-- جدید: اگر آخریه و فرده -->
+                            <div class="menu_item mt-1 col-5 mx-auto"> <!-- جدید: وسط‌چین -->
+                        {% else %}
+                            <div class="menu_item mt-1 col-5 mx-auto"> <!-- معمولی -->
+                        {% endif %}
 
-                            {% if product.image %}
-                                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="item-image">
-                            {% else %}
-                                <img src="{% static 'images/download.png' %}" alt="default image" class="unavailable-image">
-                            {% endif %}
+                                {% if product.image %}
+                                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="item-image">
+                                {% else %}
+                                    <img src="{% static 'images/download.png' %}" alt="default image" class="unavailable-image">
+                                {% endif %}
+                                
+                                <strong class="item-name"> {{ product.name }} </strong> 
                             
-                            <strong class="item-name"> {{ product.name }} </strong> 
-                           
-                            <p class="item-description"> {{ product.description }} </p>
-                            <p class="item-price"> {{ product.price }} </p>
-                        </div>
-                {% endfor %}
-            {% endwith %}
-        </div>
-    {% endfor %}
-</div>
+                                <p class="item-description"> {{ product.description }} </p>
+                                <p class="item-price"> {{ product.price }} </p>
+                            </div>
+                    {% endfor %}
+                {% endwith %}
+            </div>
+        {% endfor %}
+
+
+
+
+
+    </div>
 
 
 
@@ -206,37 +223,36 @@
 
 
 
-<script>
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    const targetID = this.getAttribute('href').substring(1);
-    const targetElement = document.getElementById(targetID);
-    if (targetElement) {
-      // فاصله بالایی که میخوای (مثلاً 50 پیکسل)
-      const offset = 250;
-      const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-      const offsetPosition = elementPosition - offset;
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  });
-});
-</script>
+    <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetID = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetID);
+        if (targetElement) {
+        // فاصله بالایی که میخوای (مثلاً 50 پیکسل)
+        const offset = 250;
+        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - offset;
+        
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+        }
+    });
+    });
+    </script>
 
 
 
 
 
-    {% endblock %}
+{% endblock %}
     
 
 
 {% block food-items %}
-
 
 
 {% endblock %}
