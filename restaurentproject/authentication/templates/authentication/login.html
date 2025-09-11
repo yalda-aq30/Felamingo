@@ -63,10 +63,14 @@
         transform: translateY(-5px); 
     }
 </style>
+{% endblock %} 
+
+
+{% block inputs_content %}
 
 <form method="post">
     {% csrf_token %}
-    <div class="inputs-div">
+    <div class="inputs-div"> 
         <input type="text" name="username" placeholder="username..." required class="inputs"> <br>
         <br>
         <input type="text" name="password" placeholder="password..." required class="inputs"> <br>
@@ -77,4 +81,5 @@
 
 
 </form>
+
 {% endblock %}

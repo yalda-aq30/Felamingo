@@ -1,5 +1,7 @@
 {% load static %} 
 <!DOCTYPE html>
+
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -260,7 +262,7 @@
             <ul>
                 <li><a href="#" id="homeLink">Home</a></li>
                 <li><a href="#" id="authLink">Authentication</a></li>
-                <li><a href="#" id="aboutLink">About us</a></li>
+                <li><a href="{% url 'employment:employment' %}" id="aboutLink">Employment</a></li> 
                 <li><a href="#" id="contactLink">Contact</a></li> 
             </ul>
         </div>
@@ -303,8 +305,17 @@
         window.location.href = "/register/";
       }
     }
+    if (e.target && e.target.id === "aboutLink") { 
+}
+
   });
 </script>
+
+
+{% block script_content %}
+
+{% endblock %}
+
 
 
 
@@ -323,6 +334,20 @@
 {% block food-items %}
 
 {% endblock %}
+
+
+{% block inputs_content %}
+
+
+{% endblock %}
+
+
+{% block employment_content %}
+
+{% endblock %}
+
+
+
 <br>
 <br>
 
