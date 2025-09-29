@@ -2,6 +2,10 @@ from django.shortcuts import render
 from .models import Product , Category
 # Create your views here.
 
+
+
+
+
 def index(request):
     available_products = Product.objects.filter(available = True) 
     categories = Category.objects.all().order_by('-id')
@@ -10,3 +14,5 @@ def index(request):
         'categories' : categories,
     }
     return render(request ,'menu/index.html' , context)   
+
+

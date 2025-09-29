@@ -100,6 +100,91 @@
         margin-bottom: 15px;
         position: relative;
     }
+
+@media (max-width: 768px) {
+
+    /* کتگوری‌ها */
+    .scroolbar {
+        padding: 10px;
+        overflow-x: scroll;
+        white-space: nowrap;
+    }
+    .category_items {
+        width: 50px;
+        height: 50px;
+        margin: 5px;
+    }
+    .category_images {
+        width: 100%;
+        height: 100%;
+    }
+    .category_items_name {
+        font-size: 8px;
+        margin-top: 5px;
+        text-align: center;
+    }
+
+    /* ایتم‌های منو */
+    .menu_item {
+        width: 90% !important;
+        height: 160px;
+        display: flex !important; 
+        flex-direction: row-reverse !important; /* عکس سمت راست */
+        align-items: center;
+        justify-content: flex-start;
+        padding: 10px;
+        margin: 10px auto;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        border-radius: 10px;
+        background-color: white;
+        min-height: 100px; 
+    }
+    .item-image, .unavailable-image {
+        width: 130px !important;  
+        height: 120px !important;  
+        object-fit: cover;
+        border-radius: 8px;
+        margin-right:230px ;
+    }
+
+    .item-text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        text-align: left;
+    }
+
+    .item-name {
+        font-weight: bold;
+        font-size: 16px;
+        margin-top:-90px;
+        margin-right:110px;
+    }
+
+    .item-description {
+        font-size: 14px;
+        line-height: 1.2;
+        margin-bottom: 5px;
+        width: 150px;
+        text-align:center;
+        margin-top:10px ;
+        text-align: left;
+    }
+
+    .item-price {
+        font-weight: bold;
+        text-align: left;
+    }
+
+    /* خط جداکننده کتگوری‌ها */
+    .hr-style {
+        width: 80% !important;
+        margin: 20px auto !important;
+    }
+}
+
+
     {% endblock %}
 
 </style>

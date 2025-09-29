@@ -7,8 +7,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('' , menu_views.index , name='index'), 
-    path('register/', auth_views.register_view, name='register'),
-    path('login/', auth_views.login_view, name='login'),
-    path('logout/', auth_views.logout_view, name='logout'),
-    path('employment/', include('employment.urls', namespace='employment')) 
+    path('', include('authentication.urls', namespace='authentication')),  
+    path('', include('menu.urls', namespace='menu')), 
+    path('employment/', include('employment.urls', namespace='employment')), 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 

@@ -1,5 +1,5 @@
 {% extends "menu/base.html" %} 
-{% block content %}
+{% block content %} 
 <style>
     body{
         /* background-color: rgb(254, 215, 222); */
@@ -13,8 +13,8 @@
         border-radius: 17px;
         box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
         transition: 0.2s;
-        margin-left: 450px;
-        margin-top: 50px;
+        margin-left: 600px;
+        margin-top: 110px;
         padding-left: 65px;
         padding-top: 40px;
         padding-bottom: 30px;
@@ -27,6 +27,7 @@
         border-style: solid;
         border-width: 2px; 
         margin-bottom: -30px;
+        margin-top: -12px;
         border-radius: 10px;
         width: 300px;
         padding: 13px;
@@ -62,18 +63,31 @@
     .inputs-div:hover{
         transform: translateY(-5px); 
     }
+
+    @media (max-width: 768px){
+    .inputs-div{
+        margin-right:50px ;
+        width:85%;
+        padding: 40px;
+        margin: -20px 20px; /* فرم وسط و فاصله از بالا */
+    }
+    .inputs{
+        width: 100%; /* پر کردن عرض فرم */
+        margin-bottom: -10px; /* فاصله کمتر بین اینپوت‌ها */
+    }
+    .submit{
+        width: 100%;
+        margin-left: 0;
+        margin-top: 10px;
+        margin-left:10px ;
+        position: relative; /* حذف absolute */
+    }
+    }
+
+
+
 </style>
 
-<!-- <div class="inputs-div">
-
-    <form action="" method="post" class="inputs"> 
-        {{form.as_table}}
-        <button class="submit">
-            Submit
-        </button> 
-    </form>
-
-</div> -->
 
 <form method="post">
     {% csrf_token %}
@@ -85,8 +99,8 @@
         <input type="text" name="phone number" placeholder="phone number..." required class="inputs"> <br>
         <br>
         <select name="sex" required class="inputs" style="cursor: pointer;"> <br>
-            <option value="">Select sex...</option>
-            <option value="male">Male</option>
+            <option value="">Select gender...</option>
+            <option value="male">Male</option> 
             <option value="female">Female</option>
             <option value="none">None</option>
         </select> <br>
