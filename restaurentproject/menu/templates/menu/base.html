@@ -272,16 +272,17 @@
 
     /* موبایل: ظرف عکس منعطف و تصویر با ارتفاع طبیعی نمایش داده بشه */
     .main_picture_wrapper {
-        height: 35vh;  /* ارتفاع ثابت برای دسکتاپ و موبایل */
         overflow: hidden;
         position: relative;
         border-radius: 13px; 
+        height: 180px;
     }
 
     .main_picture {
         left: 50%;
         width: 100%;
         height: 100%;
+        height: 35vh;  /* ارتفاع ثابت برای دسکتاپ و موبایل */
         object-fit: cover;
         transform: translate(-50%, -50%); /* وسط‌چین کردن تصویر */
         object-fit: cover;   /* تصویر کراپ میشه ولی کشیده نمیشه */
