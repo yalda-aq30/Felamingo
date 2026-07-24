@@ -11,8 +11,8 @@ class EmploymentForm(forms.ModelForm):
         phone = self.cleaned_data['phone_number']
         phone_str = str(phone)
         if phone_str.startswith("0"):
-            phone_str = "+98" + phone_str[1:]
-        elif not phone_str.startswith("+98"):
-            phone_str = "+98" + phone_str
+            phone_str = "+358" + phone_str[1:]
+        elif not phone_str.startswith("+358"):
+            phone_str = "+358" + phone_str
         return phone_str
 

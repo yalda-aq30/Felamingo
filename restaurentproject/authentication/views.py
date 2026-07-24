@@ -11,7 +11,7 @@ def register_view(request):
         username = request.POST['username']
         password = request.POST['password']
         if User.objects.filter(username=username).exists():
-            messages.error(request, "in nam sabt shode ast!")
+            messages.error(request, "Username already exists!")
             return redirect('authentication:register')
         user = User.objects.create_user(username=username, password=password)
         login(request, user)
