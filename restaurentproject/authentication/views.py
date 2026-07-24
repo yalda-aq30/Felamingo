@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required 
 
 # Create your views here.
 
@@ -12,10 +12,10 @@ def register_view(request):
         password = request.POST['password']
         if User.objects.filter(username=username).exists():
             messages.error(request, "in nam sabt shode ast!")
-            return redirect('register')
+            return redirect('authentication:register')
         user = User.objects.create_user(username=username, password=password)
         login(request, user)
-        messages.success(request, f"خوش آمدی، {username}!") 
+        messages.success(request, f"Welcome {username}!") 
         return redirect('index') 
     return render(request, 'authentication/register.html') 
     
@@ -29,7 +29,7 @@ def login_view(request):
             login(request, user)
             return redirect('index')
         else:
-            messages.error(request, 'اطلاعات ورود نادرست است.')
+            messages.error(request, 'Incorrect login information!')
     return render(request, 'authentication/login.html')
 
 
